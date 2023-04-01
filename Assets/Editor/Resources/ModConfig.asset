@@ -20,4 +20,4 @@ MonoBehaviour:
     Manual: ktane.timwi.de/HTML/Zip%20Zap%20Zop'
   version: 1.0
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 00e43d67632aab94d970559138ef7fe8, type: 3}

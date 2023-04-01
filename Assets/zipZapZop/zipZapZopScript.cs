@@ -16,7 +16,7 @@ public class zipZapZopScript : MonoBehaviour {
 
     public KMBombInfo BombInfo;
     public KMNeedyModule BombModule;
-    public KMAudio KMAudio;
+    public KMAudio audio;
 
     private bool active = false;
     private bool selection = false;
@@ -149,19 +149,17 @@ public class zipZapZopScript : MonoBehaviour {
             switch (j)
             {
                 case 2:
-                    KMAudio.PlaySoundAtTransform(audios[0].ToString().Substring(0, 3), transform);
+                    audio.PlaySoundAtTransform(audios[0].ToString().Substring(0, 3), transform);
                     break;
                 case 3:
-                    KMAudio.PlaySoundAtTransform(audios[1].ToString().Substring(0, 3), transform);
+                    audio.PlaySoundAtTransform(audios[1].ToString().Substring(0, 3), transform);
                     break;
                 case 4:
-                    KMAudio.PlaySoundAtTransform(audios[2].ToString().Substring(0, 3), transform);
+                    audio.PlaySoundAtTransform(audios[2].ToString().Substring(0, 3), transform);
                     break;
             }
             if (!(button == buttons[5 - (3-zappy)]))
             {
-                Debug.LogFormat("yo {0}", button);
-                Debug.LogFormat("yo {0}", buttons[5 - (3 - zappy) - 1]);
                 BombModule.HandleStrike();
                 Debug.LogFormat("[Zip Zap Zop #{0}] Strike! You pressed {1} instead of {2}.", moduleId,button.ToString().Substring(0, 3), audios[zappy].ToString().Substring(0, 3));
                 zappy = 0;
@@ -195,9 +193,7 @@ public class zipZapZopScript : MonoBehaviour {
             {
                 leftRng = rightRng = 0;
             }
-            Debug.LogFormat("{0}", leftRng);
-            Debug.LogFormat("{0}", rightRng);
-            KMAudio.PlaySoundAtTransform(audios[zappy].ToString().Substring(0,3), transform);
+            audio.PlaySoundAtTransform(audios[zappy].ToString().Substring(0,3), transform);
             if (lr == 0)
             {
                 if (leftRng == 1)
@@ -231,6 +227,7 @@ public class zipZapZopScript : MonoBehaviour {
             pointers[3].gameObject.SetActive(false);
             if (active)
             {
+                StopCoroutine(FinalCountdown());
                 StartCoroutine(FinalCountdown());
                 break;
             }
@@ -262,6 +259,7 @@ public class zipZapZopScript : MonoBehaviour {
                 counting = false;
             }
             yield return new WaitForSeconds(0.25f);
+            if (!counting) break;
         }
         if (counting) Zoppy();
         
