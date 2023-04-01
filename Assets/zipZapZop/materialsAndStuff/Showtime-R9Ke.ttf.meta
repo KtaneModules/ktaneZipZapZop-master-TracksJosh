@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d4224a2dcc0797b4bb1fe428da897c1b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Showtime
+  fontNames:
+  - Showtime
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: mod.bundle
+  assetBundleVariant: 
